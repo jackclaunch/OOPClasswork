@@ -1,58 +1,9 @@
-myEmployees = {
-    "e1": {
-        "name": "Jim",
-        "basic pay": 80000,
-        "allowance": 15000,
-        "deductions": 1300,
-        "taxes": 2500,
-        "gross pay": "",
-        "net pay": ""
-    },
-    "e2": {
-        "name": "Jack",
-        "basic pay": 65000,
-        "allowance": 10000,
-        "deductions": 900,
-        "taxes": 1800,
-        "gross pay": "",
-        "net pay": ""
-    },
-    "e3": {
-        "name": "George",
-        "basic pay": 72000,
-        "allowance": 12000,
-        "deductions": 1100,
-        "taxes": 2100,
-        "gross pay": "",
-        "net pay": ""
-    },
-    "e4": {
-        "name": "Angela",
-        "basic pay": 58000,
-        "allowance": 8000,
-        "deductions": 700,
-        "taxes": 1500,
-        "gross pay": "",
-        "net pay": ""
-    },
-    "e5": {
-        "name": "Kevin",
-        "basic pay": 60000,
-        "allowance": 9000,
-        "deductions": 800,
-        "taxes": 1600,
-        "gross pay": "",
-        "net pay": ""
-                 }
-            }
+myEmployees = {}
 
 def checkPay(employee):
     employee["gross pay"] = employee["basic pay"] + employee["allowance"]
     employee["net pay"] = employee["gross pay"] - employee["deductions"] - employee["taxes"]
     return employee
-
-for employeeID, employeeInfo in myEmployees.items():
-    checkPay(employeeInfo)
 
 def addEmployee(idNum):
     myEmployees.update({
@@ -95,7 +46,7 @@ def printEmployees():
         idInput = input("ID of employee to print: ")
         print(myEmployees[f"e{idInput}"])
 
-i = 5
+i = 0
 while True:
     userInput = input("1. Add an employee \n2. Remove an employee\n"
                       "3. Modify an employee\n4. Print employees\n5. Exit\n")
