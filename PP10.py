@@ -1,13 +1,13 @@
-myQueue = []
+myStack = []
 
 def push(item):
-    myQueue.append(item)
+    myStack.append(item)
 
 def pop():
-    myQueue.pop()
+    myStack.pop()
 
 def display():
-    print(myQueue)
+    print(myStack)
 
 while True:
     userInput = input("1. Push\n2. Pop\n3. Display\n4. Exit\n")
