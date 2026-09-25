@@ -74,7 +74,7 @@ def delEmployee():
 
 def modifyEmployee():
         idInput = input("ID of employee to modify: ")
-        userEditInput = input("1. edit basic pay\n2. edit allowance\n3. edit deductions\n4. edit taxes")
+        userEditInput = input("1. edit basic pay\n2. edit allowance\n3. edit deductions\n4. edit taxes\n")
         editInput = {
                         "1": "basic pay",
                         "2": "allowance",
@@ -95,14 +95,14 @@ def printEmployees():
         idInput = input("ID of employee to print: ")
         print(myEmployees[f"e{idInput}"])
 
-id = 5
+i = 5
 while True:
     userInput = input("1. Add an employee \n2. Remove an employee\n"
                       "3. Modify an employee\n4. Print employees\n5. Exit\n")
     
     if userInput == "1":
-        id = id + 1
-        addEmployee(id)
+        i = i + 1
+        addEmployee(i)
     elif userInput == "2":
         delEmployee()
     elif userInput == "3":
