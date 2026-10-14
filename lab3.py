@@ -42,6 +42,7 @@ class Author:
         self.phone = ""
         self.email = ""
         self.books_written = []
+        self.followerCount = 0
     def create_new_author(self):
         self.id = int(input("Enter author ID: "))
         self.name = input("Enter name: ")
@@ -57,8 +58,12 @@ class Author:
         print("Phone:", self.phone)
         print("Email:", self.email)
         print("Books written:", self.books_written)
+        print("Follower Count:", self.followerCount)
     def add_book(self, book_id):
         self.books_written.append(book_id)
+
+    def add_follower(self):
+        self.followerCount = self.followerCount + 1
 
 class User:
     def __init__(self):
@@ -68,6 +73,7 @@ class User:
         self.address = ""
         self.email = ""
         self.books_borrowed = []
+        self.authors_following = []
     def create_new_user(self):
         self.id = int(input("Enter user ID: "))
         self.name = input("Enter name: ")
@@ -80,11 +86,14 @@ class User:
         print("Address:", self.address)
         print("Email:", self.email)
         print("Books borrowed:", self.books_borrowed)
-
+        print("Following:", self.authors_following)
     def add_books_borrowed(self, book_id):
         self.books_borrowed.append(book_id)
     def remove_books_borrowed(self, book_id):
         self.books_borrowed.remove(book_id)
+
+    def follow_author(self, author_id):
+        self.authors_following.append(author_id)
 
 
 booksList = []
@@ -93,7 +102,7 @@ userList = []
 
 while True:
     userInput = input("1. Add content\n2. Assign author\n3. Borrow a book\n"
-                      "4. Return a book\n5. Print content\n")
+                      "4. Return a book\n5. Follow an author\n6. Print content\n")
     if userInput == "1":
         userInput = input("1. New book\n2. New author\n3. New user\n")
         if userInput == "1":
@@ -145,6 +154,7 @@ while True:
                             print("Invalid user ID")
             except IndexError:
                 print("Invalid book ID")
+
     elif userInput == "4":
         bookID = int(input("Enter returning book ID: "))
         userID = int(input("Enter user ID: "))
@@ -164,6 +174,25 @@ while True:
                 print("Invalid book ID")
 
     elif userInput == "5":
+        authorID = int(input("Enter author ID: "))
+        userID = int(input("Enter user ID: "))
+        for i in range(len(authorsList)):
+            try:
+                author = authorsList[i]
+                if author.id == authorID:
+                    for j in range(len(userList)):
+                        try:
+                            user = userList[j]
+                            if user.id == userID:
+                                author.add_follower()
+                                user.follow_author(authorID)
+                        except IndexError:
+                            print("Invalid user ID")
+            except IndexError:
+                print("Invalid author ID")
+
+
+    elif userInput == "6":
         userInput = input("1. Print books\n2. Print authors\n3. Print users\n")
         if userInput == "1":
             for i in range(len(booksList)):
@@ -178,3 +207,6 @@ while True:
                 user = userList[i]
                 user.display_user()
         userInput = "x"
+
+
+
