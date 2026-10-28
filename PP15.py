@@ -1,0 +1,28 @@
+import streamlit as st
+from PIL import Image
+col1, col2 = st.columns([3,2])
+st.set_page_config(layout="wide")
+with col1:
+    st.title("Jack Claunch")
+    st.header("Freshman at JBU, Computer Science")
+    st.subheader("About Me")
+    st.text("I am taking OOP in the fall 2026")
+    st.subheader("Qualifications")
+    st.text("Python")
+    st.subheader("Work experience")
+    st.text("work")
+    st.subheader("Projects")
+    st.text("github.com/jackclaunch")
+    st.subheader("Contact Information")
+    st.text("**my info**")
+    st.markdown("**Contact me:**")
+    userName = st.text_input("Your Name")
+    userEmail = st.text_input("Your Email")
+    userMessage = st.text_input("Your Message")
+    st.color_picker("favorite color")
+    st.button("click me")
+    st.divider()
+with col2:
+    image = Image.open("cat.png")
+    st.image(image)
+    st.latex("hello")
