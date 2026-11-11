@@ -109,7 +109,7 @@ class StudentMaster:
         self.name = input("Enter Student Name: ")
         self.department = input("Enter Department: ")
         self.courses = ask_courses()
-        self.gpa = float(input("Enter GPA: "))
+        self.gpa = input("Enter GPA: ")
 
     def add_student(self):
         self.get_details()
@@ -171,37 +171,33 @@ while True:
     if choice == "5":
         break
 
-    try:
-        if userView == "1":
-            stu = StudentMaster()
-            if choice == "1":
-                stu.add_student()
-            elif choice == "2":
-                display_items("StudentMaster")
-            elif choice == "3":
-                stu.update_student()
-            elif choice == "4":
-                stu.delete_student()
-            else:
-                print("Invalid choice!")
-        elif userView == "2":
-            fac = FacultyMaster()
-            if choice == "1":
-                fac.add_faculty()
-            elif choice == "2":
-                display_items("FacultyMaster")
-            elif choice == "3":
-                fac.update_faculty()
-            elif choice == "4":
-                fac.delete_faculty()
-            else:
-                print("Invalid choice!")
+    if userView == "1":
+        stu = StudentMaster()
+        if choice == "1":
+            stu.add_student()
+        elif choice == "2":
+            display_items("StudentMaster")
+        elif choice == "3":
+            stu.update_student()
+        elif choice == "4":
+            stu.delete_student()
         else:
             print("Invalid choice!")
-    except ValueError:
-        print("Invalid number entered, try again.")
-    except mysql.connector.Error as err:
-        print("Database error:", err)
+    elif userView == "2":
+        fac = FacultyMaster()
+        if choice == "1":
+            fac.add_faculty()
+        elif choice == "2":
+            display_items("FacultyMaster")
+        elif choice == "3":
+            fac.update_faculty()
+        elif choice == "4":
+            fac.delete_faculty()
+        else:
+            print("Invalid choice")
+    else:
+        print("Invalid choice")
+
 
 
 cursor.close()
